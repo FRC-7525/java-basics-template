@@ -4,22 +4,22 @@ import java.util.List;
 
 public class Converter {
     public int add(int a, int b) {
-        // Add numbers together
+        // Add a and b together
         return 0;
     }
 
     public int addPositive(int a, int b, int c) {
-        // Add only positive numbers together (ignore negative numbers)
+        // Add a, b and c together, but don't add them to the total if they're negative
         return 0;
     }
 
     public int addList(List<Integer> list) {
-        // Add numbers together
+        // Add all numbers in list together
         return 0;
     }
 
     public int addPositiveList(List<Integer> list) {
-        // Add only positive numbers together (ignore negative numbers)
+        // Add only positive numbers in list together (ignore negative numbers)
         return 0;
     }
 
