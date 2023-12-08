@@ -61,4 +61,47 @@ class ConverterTest {
         assertEquals(0, converter.addPositiveList(Arrays.asList()));
         assertEquals(0, converter.addPositiveList(Arrays.asList( -2, -3 )));
     }
+
+    @Test
+    void testGetStringLength() {
+        assertEquals(0, converter.getStringLength(""));
+        assertEquals(1, converter.getStringLength("a"));
+        assertEquals(2, converter.getStringLength("ab"));
+        assertEquals(3, converter.getStringLength("abc"));
+        assertEquals(4, converter.getStringLength("abcd"));
+        assertEquals(5, converter.getStringLength("abcde"));
+    }
+
+    @Test
+    void testGetFirstChar() {
+        assertEquals('a', converter.getFirstChar("abc"));
+        assertEquals('b', converter.getFirstChar("bcd"));
+        assertEquals('c', converter.getFirstChar("cde"));
+        assertEquals('d', converter.getFirstChar("def"));
+        assertEquals('e', converter.getFirstChar("efg"));
+    }
+
+    @Test
+    void testContainsCharacter() {
+        assertTrue(converter.containsCharacter("abc", 'a'));
+        assertTrue(converter.containsCharacter("abc", 'b'));
+        assertTrue(converter.containsCharacter("abc", 'c'));
+        assertFalse(converter.containsCharacter("abc", 'd'));
+        assertFalse(converter.containsCharacter("abc", 'e'));
+        assertFalse(converter.containsCharacter("abc", 'f'));
+        assertFalse(converter.containsCharacter("abc", 'g'));
+        assertFalse(converter.containsCharacter("abc", 'h'));
+    }
+
+    @Test
+    void testGetStringsWithLetter() {
+        assertEquals(Arrays.asList("abc"), converter.getStringsWithLetter(Arrays.asList("abc", "bcd", "cde", "def", "efg"), 'a'));
+        assertEquals(Arrays.asList("abc", "bcd"), converter.getStringsWithLetter(Arrays.asList("abc", "bcd", "cde", "def", "efg"), 'b'));
+        assertEquals(Arrays.asList("abc", "bcd", "cde"), converter.getStringsWithLetter(Arrays.asList("abc", "bcd", "cde", "def", "efg"), 'c'));
+        assertEquals(Arrays.asList("bcd", "cde", "def"), converter.getStringsWithLetter(Arrays.asList("abc", "bcd", "cde", "def", "efg"), 'd'));
+        assertEquals(Arrays.asList("cde", "def", "efg"), converter.getStringsWithLetter(Arrays.asList("abc", "bcd", "cde", "def", "efg"), 'e'));
+        assertEquals(Arrays.asList("def", "efg"), converter.getStringsWithLetter(Arrays.asList("abc", "bcd", "cde", "def", "efg"), 'f'));
+        assertEquals(Arrays.asList("efg"), converter.getStringsWithLetter(Arrays.asList("abc", "bcd", "cde", "def", "efg"), 'g'));
+        assertEquals(Arrays.asList(), converter.getStringsWithLetter(Arrays.asList("abc", "bcd", "cde", "def", "efg"), 'h'));
+    }
 }
